@@ -192,6 +192,15 @@ $(document).ready(function () {
 							controls.updateTextareaSelection(textarea, selectionEnd + 4 - wrapDelta[1], selectionEnd + strings.picture_url.length + 4 - wrapDelta[1]);
 						}
 					});
+
+					formatting.addButtonDispatch('poll', function (textarea, selectionStart, selectionEnd) {
+						const div = document.createElement('div')
+						div.id = 'createPoll'
+						document.body.append(div)
+						window.onPollReady = (id) => {
+							controls.insertIntoTextarea(textarea, `[poll=${id}]`);
+						}
+					});
 				});
 			}
 		});
